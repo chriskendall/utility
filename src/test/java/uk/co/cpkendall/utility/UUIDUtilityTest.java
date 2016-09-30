@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Travelex Ltd
+// Copyright (c) 2016 C P Kendall
 
 package uk.co.cpkendall.utility;
 
@@ -22,11 +22,33 @@ public class UUIDUtilityTest {
     }
 
     @Test
+    public void getUUIDFromEncodedStringTest() {
+
+        UUID uuid = UUID.fromString("b9312a03-bf2d-43e8-8560-82abd1e38385");
+
+        assertEquals("uTEqA78tQ_ghWCCq9Hjg4U", UUIDUtility.get22CharacterUUIDString(uuid));
+
+        assertEquals("b9312a03-bf2d-43e8-8560-82abd1e38385", UUIDUtility.getUUIDFromEncodedString("uTEqA78tQ_ghWCCq9Hjg4U").toString());
+
+    }
+
+
+    @Test
     public void getEncodedLongTest() {
+        Long value = 23463682394857234L;
 
-        Long value = 123456789L;
+        assertEquals("AFNcGEZEnxI", UUIDUtility.getEncodedLong(value));
+    }
 
-        assertEquals("AAAAAAdbzRU", UUIDUtility.getEncodedLong(value));
+
+    @Test
+    public void getUUIDFrormEncodedStringTest() {
+
+        long value = 3489896342348L;
+
+        assertEquals("AAADLI4II0w", UUIDUtility.getEncodedLong(value));
+
+        assertEquals(value, UUIDUtility.getLongFromEncodedString("AAADLI4II0w"));
 
     }
 
